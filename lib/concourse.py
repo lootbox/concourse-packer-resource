@@ -116,6 +116,8 @@ def do_in() -> None:
 def do_out() -> None:
     # read the concourse input payload
     input_payload = _read_payload()
+    # get force setting from payload
+    force_enabled: bool = input_payload['params'].get('force', False)
     # get debug setting from payload
     debug_enabled: bool = input_payload['params'].get('debug', False)
     # get the template file path from the payload
@@ -166,7 +168,8 @@ def do_out() -> None:
         var_file_paths=var_file_paths,
         vars=vars,
         vars_from_files=vars_from_files,
-        debug=debug_enabled)
+        debug=debug_enabled,
+        force=force_enabled)
     # dump build manifest, if debug
     if debug_enabled:
         log('build manifest:')

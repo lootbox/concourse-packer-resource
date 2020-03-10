@@ -265,7 +265,8 @@ def build(
         var_file_paths: List[str] = None,
         vars: dict = None,
         vars_from_files: dict = None,
-        debug: bool = False) -> dict:
+        debug: bool = False,
+        force: bool = False) -> dict:
     packer_command_args = []
     # add any specified var file paths
     if var_file_paths:
@@ -283,6 +284,9 @@ def build(
                     file_path,
                     working_dir=working_dir_path)
             packer_command_args.append(f"-var={var_name}={var_value}")
+    # add force if requested
+    if force:
+        packer_command_args.append("-force")
     # dump args on debug
     if debug:
         log('build args:')

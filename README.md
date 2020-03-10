@@ -34,6 +34,8 @@ a [concourse-ci](https://concourse-ci.org) resource for building images via [pac
 
 - `vars_from_files`: _optional_. dict of vars and file paths to use as their value.
 
+- `force`: _optional_. set to `true` to enable the [force](https://packer.io/docs/commands/build.html#force) option during a packer build. default: `false`
+
 - `debug`: _optional_. set to `true` to dump argument values and parsed output. **may result in leaked credentials**. default: `false`
 
 the id of the first artifact produced will be used as the version, with the full artifact details in the output metadata
